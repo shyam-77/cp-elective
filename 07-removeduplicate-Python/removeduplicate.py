@@ -3,6 +3,15 @@
 # if given String is "JavaPython" then the output should be "JavPython".
 # The second or further occurrence of duplicate should be removed.
 
-def removeduplicate(text):
-	# Your code goes here
-	pass
+
+
+
+
+def removeduplicate(text): 
+    b = []
+    c = ""
+    for i in text:
+        if i not in b:
+            b.append(i)
+        c=''.join(b)
+    return c
