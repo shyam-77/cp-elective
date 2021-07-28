@@ -11,5 +11,15 @@ Return the index of value, or -1 if the value
 doesn't exist in the list."""
 
 def binary_search(input_array, value):
-    # Your code goes here
-    pass
+    #test_list = [1,3,9,11,15,19,29]
+    s=0 
+    e=len(input_array)
+    m=(s+e)//2
+    while input_array[m]!=value and s<e:
+        if input_array[m]>value:
+            e=m-1
+        else:
+            s=m+1
+        m=(s+e)//2    
+        
+    return m if input_array[m]==value else -1
