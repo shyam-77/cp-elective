@@ -9,17 +9,36 @@ meaning there are no repeated values, and
 elements are in a strictly increasing order.
 Return the index of value, or -1 if the value
 doesn't exist in the list."""
-
 def binary_search(input_array, value):
-    #test_list = [1,3,9,11,15,19,29]
-    s=0 
-    e=len(input_array)
-    m=(s+e)//2
-    while input_array[m]!=value and s<e:
-        if input_array[m]>value:
-            e=m-1
+     
+    # search space is `A[left…right]`
+    (left, right) = (0, len(input_array) - 1)
+ 
+    # loop till the search space is exhausted
+    while left <= right:
+ 
+        # find the mid-value in the search space and
+        # compares it with the target
+ 
+        mid = (left + right) // 2
+ 
+        # overflow can happen. Use:
+        # mid = left + (right - left) / 2
+        # mid = right - (right - left) // 2
+ 
+        # key is found
+        if value == input_array[mid]:
+            return mid
+ 
+        # discard all elements in the right search space,
+        # including the middle element
+        elif value < input_array[mid]:
+            right = mid - 1
+ 
+        # discard all elements in the left search space,
+        # including the middle element
         else:
-            s=m+1
-        m=(s+e)//2    
-        
-    return m if input_array[m]==value else -1
+            left = mid + 1
+ 
+    # `x` doesn't exist in the list
+    return -1
